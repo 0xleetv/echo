@@ -13,26 +13,23 @@
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <filter id="goo">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur"/>
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -11" result="goo"/>
-      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-    </filter>
-  </defs>
-</svg>
-
 <nav class="topnav" aria-label="Main">
   <a class="wordmark" href="#top">echo</a>
-  <div class="gooey-links" id="gooeyLinks">
-    <span class="goo-blob" aria-hidden="true"></span>
-    <a href="#console" class="glink is-active" data-goo>Console</a>
-    <a href="#craft" class="glink" data-goo>Craft</a>
-    <a href="#notes" class="glink" data-goo>Notes</a>
-  </div>
-  <a class="nav-cta" href="#console">Open the console</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">
+    <span class="menu-marks" aria-hidden="true"><i></i><i></i></span>Menu
+  </button>
 </nav>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu">
+  <div class="drawer-head">
+    <span class="drawer-title">echo</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  </div>
+  <a class="dlink" href="#console">Console</a>
+  <a class="dlink" href="#craft">Craft</a>
+  <a class="dlink" href="#notes">Notes</a>
+  <a class="drawer-cta" href="#console">Open the console</a>
+</aside>
 
 <header class="hero" id="top">
   <div class="orb-wrap" id="orbWrap">
@@ -93,7 +90,6 @@
 </section>
 
 <section class="craft" id="craft">
-  <h2>Craft notes</h2>
   <p class="craft-lede">Each mechanic below was studied from the open-source component scene, then rebuilt from scratch in the studio's language. Same ideas, new bones.</p>
   <div class="craft-grid">
     <article class="card"><h3>Streaming reply</h3><p>Words land one beat at a time behind a quiet caret, with the key phrase surfacing as it forms.</p></article>
@@ -101,7 +97,7 @@
     <article class="card"><h3>Model picker</h3><p>A pill that unfolds into a quiet list instead of a dropdown menu. The dot recolours to the tier you pick.</p></article>
     <article class="card"><h3>Inline status</h3><p>Reading, scanning, drafting, polishing. A working assistant shows its hands while it works.</p></article>
     <article class="card"><h3>Source pills</h3><p>Citations arrive as small pills above the answer, not footnotes under it.</p></article>
-    <article class="card"><h3>Gooey nav</h3><p>The active pill melts between links through an SVG goo filter instead of sliding as a box.</p></article>
+    <article class="card"><h3>Slide-out menu</h3><p>The menu never sits still: a glass drawer glides in from the edge, links tumbling in one beat apart.</p></article>
     <article class="card"><h3>Fluid orb</h3><p>A canvas metaball field with drifting shading. It leans toward your pointer, gently, never glaringly.</p></article>
     <article class="card"><h3>Liquid glass</h3><p>Chrome takes the iPhone treatment: layered translucency, a lit top edge, depth instead of flat pills.</p></article>
     <article class="card"><h3>Waveform voice</h3><p>A scrubbable voice bar: drag to seek, tap to play. The demo speaks in silence, on purpose.</p></article>
@@ -109,9 +105,7 @@
 </section>
 
 <section class="notes" id="notes">
-  <h2>Notes</h2>
-  <p>This page is a <em>type study</em>: mechanics learned from open public component research (the Rare UI registry among others), re-expressed entirely in 0xleetv Studio's own code, motion and palette. No component source was copied or shipped. The studio ships rebuilt thinking, not borrowed pixels.</p>
-  <p class="fine">Built by Fo for 0xleetv Studio · Lagos time · <a href="https://github.com/0xleetv/echo">source</a> · <a href="https://0xleetvstudio.netlify.app">studio</a></p>
+  <p class="fine">A type study · built by Fo for 0xleetv Studio · <a href="https://github.com/0xleetv/echo">source</a> · <a href="https://0xleetvstudio.netlify.app">studio</a></p>
 </section>
 </main>
 

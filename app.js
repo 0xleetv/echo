@@ -41,28 +41,22 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(reduce){ draw(); cancelAnimationFrame(raf); } else draw();
 })();
 
-/* ---------- gooey nav blob ---------- */
-(function gooNav(){
-  const wrap=document.getElementById("gooeyLinks"); if(!wrap) return;
-  const blob=wrap.querySelector(".goo-blob");
-  const links=[...wrap.querySelectorAll(".glink")];
-  function move(el){
-    blob.style.width=el.offsetWidth+"px";
-    blob.style.transform=`translateX(${el.offsetLeft}px)`;
+/* ---------- slide-out menu ---------- */
+(function drawer(){
+  const btn=document.getElementById("menuBtn"); if(!btn) return;
+  const d=document.getElementById("drawer"), scrim=document.getElementById("scrim"), x=document.getElementById("drawerClose");
+  function set(open){
+    document.body.classList.toggle("menu-open",open);
+    d.classList.toggle("open",open);
+    scrim.classList.toggle("show",open);
+    btn.setAttribute("aria-expanded",String(open));
+    d.setAttribute("aria-hidden",String(!open));
   }
-  links.forEach(l=>l.addEventListener("click",()=>{
-    links.forEach(x=>x.classList.remove("is-active")); l.classList.add("is-active"); move(l);
-  }));
-  const io=new IntersectionObserver(es=>{
-    es.forEach(en=>{ if(en.isIntersecting){
-      const l=links.find(x=>x.getAttribute("href")==="#"+en.target.id);
-      if(l){ links.forEach(x=>x.classList.remove("is-active")); l.classList.add("is-active"); move(l); }
-    }});
-  },{rootMargin:"-40% 0px -55% 0px"});
-  ["console","craft","notes"].forEach(id=>{const s=document.getElementById(id); if(s) io.observe(s);});
-  const first=wrap.querySelector(".glink.is-active")||links[0];
-  requestAnimationFrame(()=>move(first));
-  addEventListener("resize",()=>move(wrap.querySelector(".glink.is-active")||links[0]));
+  btn.addEventListener("click",()=>set(true));
+  x.addEventListener("click",()=>set(false));
+  scrim.addEventListener("click",()=>set(false));
+  d.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>set(false)));
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape") set(false); });
 })();
 
 /* ---------- console demo ---------- */
