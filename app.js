@@ -77,10 +77,11 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
       reels.forEach((r,i)=>{ r.style.transform=`translateY(-${+s[i]}*1.18em)`; });
     }
     set(0);
-    const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){ io.disconnect();
-      setTimeout(()=>set(v), 250);
-    }});},{threshold:.4});
+    let done=false;
+    function roll(){ if(done) return; done=true; setTimeout(()=>set(v), 250); }
+    const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){ io.disconnect(); roll(); } });},{threshold:.4});
     io.observe(el);
+    setTimeout(roll, 2200);
   });
 })();
 

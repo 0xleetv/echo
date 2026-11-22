@@ -1,3 +1,8 @@
+@font-face{font-family:'Coddy Round';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/CoddyRound-Regular.woff2') format('woff2')}
+@font-face{font-family:'Coddy Round';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/CoddyRound-Medium.woff2') format('woff2')}
+@font-face{font-family:'Coddy Round';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/CoddyRound-SemiBold.woff2') format('woff2')}
+@font-face{font-family:'Coddy Round';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/CoddyRound-Bold.woff2') format('woff2')}
+@font-face{font-family:'Coddy Round';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/CoddyRound-ExtraBold.woff2') format('woff2')}
 :root{
   --ink:#0a0d0b; --ink-2:#0e1310; --paper:#efeadf; --muted:#8b9284;
   --lime:#b6f34c; --lime-dim:rgba(182,243,76,.14); --line:rgba(239,234,223,.08);
