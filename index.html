@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>echo — an AI console, rebuilt</title>
+<meta name="description" content="A type study from 0xleetv Studio: the interaction layer of an AI assistant, rebuilt in the studio's own language. Streaming replies, a hold-to-think prompt, a model picker, an inline status line and source pills. Every line of code original.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23b6f34c'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -11" result="goo"/>
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+  </defs>
+</svg>
+
+<nav class="topnav" aria-label="Main">
+  <a class="wordmark" href="#top">echo</a>
+  <div class="gooey-links" id="gooeyLinks">
+    <span class="goo-blob" aria-hidden="true"></span>
+    <a href="#console" class="glink is-active" data-goo>Console</a>
+    <a href="#craft" class="glink" data-goo>Craft</a>
+    <a href="#notes" class="glink" data-goo>Notes</a>
+  </div>
+  <a class="nav-cta" href="#console">Open the console</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="orb-wrap" id="orbWrap">
+    <canvas id="orb" aria-hidden="true"></canvas>
+    <div class="orb-sheen" aria-hidden="true"></div>
+  </div>
+  <p class="kicker">0xleetv Studio · type study 03</p>
+  <h1>The console an assistant deserves.</h1>
+  <p class="lede">We studied the best AI-chat interfaces on the open web, then rebuilt every mechanic in our own language: the streaming reply, the hold-to-think prompt, the model picker, the status line, the sources. Nothing here is copied. Everything here answers.</p>
+  <div class="stats" id="stats" role="list" aria-label="Build facts">
+    <div class="stat" role="listitem"><span class="odo" data-value="9" data-pad="2">00</span><span class="stat-label">components rebuilt</span></div>
+    <div class="stat" role="listitem"><span class="odo" data-value="0" data-pad="1">0</span><span class="stat-label">lines copied</span></div>
+    <div class="stat" role="listitem"><span class="odo" data-value="60" data-pad="2">00</span><span class="stat-label">frames a second</span></div>
+  </div>
+  <a class="hero-cta" href="#console">Try it below</a>
+</header>
+
+<main>
+<section class="console" id="console">
+  <div class="console-shell">
+    <div class="console-head">
+      <span class="dot dot-a"></span><span class="dot dot-b"></span><span class="dot dot-c"></span>
+      <span class="console-title">echo console</span>
+      <div class="model-picker" id="modelPicker">
+        <button class="model-current" id="modelCurrent" aria-haspopup="listbox" aria-expanded="false">
+          <span class="model-dot" aria-hidden="true"></span>
+          <span id="modelName">Echo&nbsp;1</span>
+          <svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <ul class="model-list" id="modelList" role="listbox" hidden>
+          <li role="option" aria-selected="true"  data-model="Echo 1">Echo 1 <small>balanced</small></li>
+          <li role="option" aria-selected="false" data-model="Echo Mini">Echo Mini <small>fast</small></li>
+          <li role="option" aria-selected="false" data-model="Echo Ultra">Echo Ultra <small>deep</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="thread" id="thread" aria-live="polite">
+      <div class="msg msg-ai">
+        <div class="avatar" aria-hidden="true">e</div>
+        <div class="bubble">Morning. I am the demo, not the product: a console skin rebuilt from study. Ask me something from the chips below, or just type.</div>
+      </div>
+    </div>
+
+    <div class="chips" id="chips">
+      <button class="chip" data-q="0">What can you do?</button>
+      <button class="chip" data-q="1">How was this built?</button>
+      <button class="chip" data-q="2">Why does hold-to-think matter?</button>
+    </div>
+
+    <form class="promptbar" id="promptForm" autocomplete="off">
+      <span class="status-chip" id="statusChip" hidden><span class="status-ink"></span><span id="statusText">thinking</span></span>
+      <div class="prompt-row">
+        <textarea id="promptInput" rows="1" placeholder="Ask echo anything" aria-label="Message"></textarea>
+        <button class="send" id="sendBtn" type="submit" aria-label="Hold to think, release to send">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="depth-ring" aria-hidden="true"><span class="depth-fill" id="depthFill"></span></span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <p class="console-hint">hold the send arrow to think deeper · enter sends at once · every reply streams</p>
+</section>
+
+<section class="craft" id="craft">
+  <h2>Craft notes</h2>
+  <p class="craft-lede">Each mechanic below was studied from the open-source component scene, then rebuilt from scratch in the studio's language. Same ideas, new bones.</p>
+  <div class="craft-grid">
+    <article class="card"><h3>Streaming reply</h3><p>Words land one beat at a time behind a quiet caret, with the key phrase surfacing as it forms.</p></article>
+    <article class="card"><h3>Hold-to-think</h3><p>How long you hold send sets how hard the model works. The ring fills, the status line narrates, release commits.</p></article>
+    <article class="card"><h3>Model picker</h3><p>A pill that unfolds into a quiet list instead of a dropdown menu. The dot recolours to the tier you pick.</p></article>
+    <article class="card"><h3>Inline status</h3><p>Reading, scanning, drafting, polishing. A working assistant shows its hands while it works.</p></article>
+    <article class="card"><h3>Source pills</h3><p>Citations arrive as small pills above the answer, not footnotes under it.</p></article>
+    <article class="card"><h3>Gooey nav</h3><p>The active pill melts between links through an SVG goo filter instead of sliding as a box.</p></article>
+    <article class="card"><h3>Fluid orb</h3><p>A canvas metaball field with drifting shading. It leans toward your pointer, gently, never glaringly.</p></article>
+    <article class="card"><h3>Odometer stats</h3><p>Numbers roll on a wheel of digits instead of blinking into place. Count what counts.</p></article>
+    <article class="card"><h3>Waveform voice</h3><p>A scrubbable voice bar: drag to seek, tap to play. The demo speaks in silence, on purpose.</p></article>
+  </div>
+</section>
+
+<section class="notes" id="notes">
+  <h2>Notes</h2>
+  <p>This page is a <em>type study</em>: mechanics learned from open public component research (the Rare UI registry among others), re-expressed entirely in 0xleetv Studio's own code, motion and palette. No component source was copied or shipped. The studio ships rebuilt thinking, not borrowed pixels.</p>
+  <p class="fine">Built by Fo for 0xleetv Studio · Lagos time · <a href="https://github.com/0xleetv/echo">source</a> · <a href="https://0xleetvstudio.netlify.app">studio</a></p>
+</section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
