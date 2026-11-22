@@ -65,26 +65,6 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   addEventListener("resize",()=>move(wrap.querySelector(".glink.is-active")||links[0]));
 })();
 
-/* ---------- odometer ---------- */
-(function odo(){
-  const els=[...document.querySelectorAll(".odo")];
-  els.forEach(el=>{
-    const v=+el.dataset.value, pad=+ (el.dataset.pad||String(v).length);
-    el.innerHTML=Array.from({length:pad},()=>`<span class="digit"><span class="reel">${Array.from({length:10},(_,d)=>`<span>${d}</span>`).join("")}</span></span>`).join("");
-    const reels=[...el.querySelectorAll(".reel")];
-    function set(n){
-      const s=String(n).padStart(pad,"0");
-      reels.forEach((r,i)=>{ r.style.transform=`translateY(-${+s[i]}*1.18em)`; });
-    }
-    set(0);
-    let done=false;
-    function roll(){ if(done) return; done=true; setTimeout(()=>set(v), 250); }
-    const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){ io.disconnect(); roll(); } });},{threshold:.4});
-    io.observe(el);
-    setTimeout(roll, 2200);
-  });
-})();
-
 /* ---------- console demo ---------- */
 (function demo(){
   const thread=document.getElementById("thread"); if(!thread) return;
