@@ -132,3 +132,10 @@ a{color:inherit}
 .drawer.open .drawer-cta{opacity:1;transform:none}
 body.menu-open{overflow:hidden}
 .notes{padding:20px 20px 46px;text-align:center}
+
+@media(max-width:640px){
+  .hero{min-height:72svh;padding:96px 20px 48px}
+  .orb-wrap{top:-8%;right:-8%;width:min(78vw,330px)}
+  #orb{filter:blur(2px) contrast(1.3) saturate(1.3) brightness(1.35)}
+  .console{padding:36px 14px 70px}
+}
