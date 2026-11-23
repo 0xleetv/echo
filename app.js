@@ -72,7 +72,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const QA=[
     {q:"What can you do?",
-     a:"Everything on this page is me: I <strong>stream</strong> answers instead of dumping them, I show my <strong>status</strong> while I work, I cite <strong>sources</strong> as pills above the reply, and I let you set my effort with a <strong>hold</strong>. Outside the demo, that same language runs real assistants.", s:[["0xleetv.studio","type study 03"]]},
+     a:"Everything on this page is me: I <strong>stream</strong> answers instead of dumping them, I show my <strong>status</strong> while I work, I cite <strong>sources</strong> as pills above the reply, and I let you set my effort with a <strong>hold</strong>. Outside the demo, that same language runs real assistants.", s:[["0xleetv studio","type study"]]},
     {q:"How was this built?",
      a:"Every line here is <strong>original</strong>. We studied open public component registries (Rare UI among them) for the <em>mechanics</em>: streaming, hold-to-send, gooey nav, the orb. Then we rebuilt each one in the studio's motion, palette and type. Study the idea, ship your own bones.", s:[["rareui.com","studied"],["github/0xleetv","catalog"]]},
     {q:"Why does hold-to-think matter?",
